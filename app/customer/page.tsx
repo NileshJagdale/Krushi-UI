@@ -12,7 +12,7 @@ export default function CustomerManagement() {
   // Static Data
   const customerData = [
     { type: "Retail", count: 123, icon: Users, bgColor: "bg-blue-100", route: "/customermanagement-customer" },
-    { type: "Business", count: 34, icon: Building, bgColor: "bg-green-100", route: "/business_customers" },
+    { type: "Business", count: 34, icon: Building, bgColor: "bg-green-100", route: "/customermanagement-customer" },
   ];
 
   const pendingPayments = [
@@ -70,7 +70,7 @@ export default function CustomerManagement() {
 
       {/* Advertisement */}
       <h2 className="text-lg font-semibold">Advertisement</h2>
-      <Button className="w-full" onClick={() => router.push("/marketing")}>
+      <Button className="w-full" onClick={() => router.push("/New_customer")}>
         Marketing Campaigns
       </Button>
       

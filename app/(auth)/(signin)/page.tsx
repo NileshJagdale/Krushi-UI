@@ -48,7 +48,7 @@ export default function SignInPage() {
 
     // Navigate to dashboard or home page after successful sign-in
     // Change '/dashboard' to the page you want to navigate to after sign-in
-    router.push("/today");
+    router.push("/Today");
   };
 
   return (

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation"; // For navigation
-import { Calendar, Users, FileText, Search } from "lucide-react";
+import { Calendar, Users, Percent, Receipt, List } from "lucide-react";
 
 // Define prop types for the BottomNavbar component
 interface BottomNavbarProps {
@@ -16,8 +16,9 @@ const BottomNavbar: React.FC<BottomNavbarProps> = ({ activeTab }) => {
   const tabs = [
     { id: "today", icon: Calendar, label: "Today", route: "/today" },
     { id: "customer", icon: Users, label: "Customer", route: "/customer" },
-    { id: "order", icon: FileText, label: "Order", route: "/order" },
-    { id: "search", icon: Search, label: "Search", route: "/search" },
+    { id: "sales", icon: Percent, label: "Sales", route: "/order" },
+    { id: "inventory", icon: List, label: "Inventory", route: "/store_management" },
+    { id: "finance", icon: Receipt, label: "Finance", route: "/finance" },
   ];
 
   return (

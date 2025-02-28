@@ -12,13 +12,13 @@ const StoreManagement = () => {
     { title: "Stock Tracking", icon: "📦", path: "/inventory" },
     { title: "Inventory Valuation", icon: "🏷️", path: "/inventory-valuation" },
     { title: "Inventory Shrinkage", icon: "📉", path: "/inventory_shrinkage" },
-    { title: "Product Catalog", icon: "🛒", path: "/product-catalog" },
+    { title: "Product Catalog", icon: "🛒", path: "/Products" },
     { title: "Companies", icon: "🏭", path: "/companies" },
     { title: "Categories", icon: "📂", path: "/categories" },
   ];
 
   const purchaseManagement = [
-    { title: "Stock Arrival", icon: "📦", path: "/stock-arrival" },
+    { title: "Stock Arrival", icon: "📦", path: "/received_purchase" },
     { title: "Purchase Order", icon: "📝", path: "/purchase-order" },
     { title: "Suppliers", icon: "📜", path: "/suppliers" },
   ];

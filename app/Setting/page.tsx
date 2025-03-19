@@ -13,8 +13,8 @@ const settingsSections = [
     items: [
       { label: "Store Owner Information", icon: "👤", path: "/store_owner" },
       { label: "Store Information", icon: "🏪", path: "/store_info" },
-      { label: "License Information", icon: "📜", path: "/license" },
-      { label: "Invoice Information", icon: "🧾", path: "/invoice" },
+      { label: "License Information", icon: "📜", path: "/license_info" },
+      { label: "Invoice Information", icon: "🧾", path: "/invoice_info" },
     ],
   },
   {
@@ -23,7 +23,7 @@ const settingsSections = [
   },
   {
     title: "Password",
-    items: [{ label: "Change Password", icon: "🔑", path: "/change-password" }],
+    items: [{ label: "Change Password", icon: "🔑", path: "/changepass" }],
   },
   {
     title: "Help",

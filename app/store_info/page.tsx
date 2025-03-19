@@ -21,7 +21,7 @@ export default function StoreInfoPage() {
     <div className="flex flex-col min-h-screen bg-white">
       {/* Header */}
       <div className="flex items-center p-4 border-b">
-        <ArrowLeft className="cursor-pointer" onClick={() => router.push("/settings")} />
+        <ArrowLeft className="cursor-pointer" onClick={() => router.push("/Setting")} />
         <h1 className="text-lg font-semibold mx-auto">Store Information</h1>
       </div>
 

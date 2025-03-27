@@ -1,124 +1,63 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation"; // Import useRouter for programmatic navigation
+import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import Image from "next/image";
 
-export default function SignInPage() {
-  const [formData, setFormData] = useState({
-    mobile: "",
-    password: "",
-  });
+const users = [
+  { mobile: "9876543210", password: "password123" },
+  { mobile: "1234567890", password: "admin123" },
+];
 
-  const [error, setError] = useState<string | null>(null);
-  const router = useRouter(); // Initialize router
+export default function LoginPage() {
+  const [mobile, setMobile] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
 
-  // Handle input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  // Mobile input validation - ensure only numeric and 10 digits
-  const handleMobileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-    setFormData({ ...formData, mobile: value });
-  };
-
-  // Form submission
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const { mobile, password } = formData;
-
-    if (!mobile || !password) {
-      setError("All fields are required.");
-      return;
+  const handleLogin = () => {
+    const user = users.find((u) => u.mobile === mobile && u.password === password);
+    if (user) {
+      router.push("/Manager");
+    } else {
+      setError("Invalid Mobile Number or Password");
     }
-
-    // Validate mobile number (exactly 10 digits)
-    if (mobile.length !== 10) {
-      setError("Invalid mobile number. Must be 10 digits.");
-      return;
-    }
-
-    setError(null);
-    console.log("Sign-in data:", formData);
-
-    // Navigate to dashboard or home page after successful sign-in
-    // Change '/dashboard' to the page you want to navigate to after sign-in
-    router.push("/Today");
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-white px-4">
-      <div className="w-full max-w-xs shadow-lg p-6 rounded-2xl">
+    <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4">
+      <div className="w-full max-w-sm rounded-lg bg-white p-6 shadow-md">
         <div className="flex flex-col items-center">
-          <img src="/accm.png" alt="Logo" className="w-16 h-16 mb-2" />
-          <h2 className="text-2xl font-semibold">Sign In</h2>
+          <Image src="/accm.png" alt="Logo" width={60} height={60} />
+          <h2 className="mt-3 text-xl font-semibold">Sign In</h2>
         </div>
-
-        <div className="mt-4 space-y-4">
-          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <Label htmlFor="mobile">Mobile Number</Label>
-              <Input
-                id="mobile"
-                name="mobile"
-                type="text"
-                placeholder="Enter mobile number"
-                value={formData.mobile}
-                onChange={handleMobileChange}
-                className="rounded-lg"
-                maxLength={10} // Restrict input length to 10 digits
-                inputMode="numeric" // Only numeric input
-              />
-            </div>
-
-            <div>
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                name="password"
-                type="password"
-                placeholder="Enter password"
-                value={formData.password}
-                onChange={handleChange}
-                className="rounded-lg"
-              />
-            </div>
-
-            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
-              Sign In
-            </Button>
-          </form>
-
-          <div className="text-center mt-2 space-y-2">
-            <p className="text-sm">
-              Don't have an account?{" "}
-              <Button
-                onClick={() => router.push("/Enteraadharno")}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg"
-              >
-                Sign Up
-              </Button>
-            </p>
-            <p className="text-sm">
-              <a
-                onClick={() => router.push("/forgotpassword")}
-                className="text-blue-500 hover:underline cursor-pointer"
-              >
-                Forgot Password?
-              </a>
-            </p>
-          </div>
+        <div className="mt-4">
+          <Input
+            type="text"
+            placeholder="Mobile Number"
+            value={mobile}
+            onChange={(e) => setMobile(e.target.value)}
+            className="mb-2"
+          />
+          <Input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="mb-2"
+          />
+          {error && <p className="text-red-500 text-sm">{error}</p>}
+          <Button onClick={handleLogin} className="w-full mt-2">
+            Sign In
+          </Button>
+          <p className="mt-2 text-sm text-blue-500 text-center cursor-pointer">
+            Forgot Password?
+          </p>
         </div>
-
-        <p className="text-center text-gray-500 text-xs mt-4">© 2025 Deavnet Solutions</p>
+        <p className="mt-4 text-center text-xs text-gray-500">© 2025 Deavnet Solutions</p>
       </div>
-    </main>
+    </div>
   );
 }

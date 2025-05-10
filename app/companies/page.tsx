@@ -77,7 +77,7 @@ const Companies = () => {
             <Card
               key={company.id}
               className="p-3 border cursor-pointer hover:bg-gray-100 transition"
-              onClick={() => router.push("/")}
+              onClick={() => router.push("/company_insights")}
             >
               <h2 className="text-lg font-semibold">Business’s Name</h2>
               <p className="text-sm">{company.name}</p>
